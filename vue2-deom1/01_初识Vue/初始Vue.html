@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>初识Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>hello {{name}}{{1+1}}{{address.toUpperCase()}}</h1><!--{{}}里可以写js表达式和Vue实例数据域中的值-->
+</div>
+<!--总结：容器与Vue实例是一一对应的，无法多个实例对一个容器，多个Vue无法对应一个容器-->
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    //Vue实例接管 root，root以外的节点无法使用
+    const X = new Vue({
+        el: '#root',//'#root'是css id选择器,底层使用拿到root的document
+        data: {
+            name: 'world',
+            address:'china'
+        }
+    });
+
+</script>
+</body>
+</html>

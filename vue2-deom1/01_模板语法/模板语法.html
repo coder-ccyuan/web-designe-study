@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+<!--    只能在解析标签体里的内容-->
+    <h1>插值表达式</h1>
+    <h3>{{name}}</h3>
+    <hr>
+<!--    解析标签 包括：标签体内容，标签属性,绑定事件-->
+    <h1>指令语法</h1>
+    <a v-bind:href="url">{{url}}</a>
+    <br>
+<!--    v-bind 的简写是 :-->
+    <a :href="url">{{url}}</a>
+</div>
+<script>
+   const root= new Vue({
+        el:'#root',
+        data:{
+            name:'插值表达式',
+            url:'https://baidu.com'
+        }
+    })
+</script>
+</body>
+</html>
