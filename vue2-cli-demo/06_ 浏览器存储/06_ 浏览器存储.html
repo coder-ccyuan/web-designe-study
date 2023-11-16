@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="savaData()">点击添加存储</button>
+<button onclick="removeData()">点击移除存储</button>
+<button onclick="clearData()">点击清空存储</button>
+<script>
+
+    function savaData() {
+        console.log("savaData")
+        sessionStorage.setItem('id', '111')
+        localStorage.setItem('id', '111')
+        localStorage.setItem('name', '111')
+    }
+
+    function removeData() {
+        console.log("removeData")
+        sessionStorage.removeItem('id')
+        localStorage.removeItem('id')
+    }
+
+    function clearData() {
+        console.log("removeData")
+        sessionStorage.clear()
+        localStorage.clear()
+    }
+
+
+
+</script>
+</body>
+</html>

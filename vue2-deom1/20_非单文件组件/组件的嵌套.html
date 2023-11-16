@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <App></App>
+</div>
+<script>
+    const School = Vue.extend({
+        name:'School',
+        template:
+            '<div><h1>{{name}}</h1></div>',
+        data() {
+            return {
+                name: '新余学院'
+            }
+        },
+
+    })
+    const Student = Vue.extend({
+        name: "Student",//组件在开发者工具中呈现的名字
+        template:
+            '<div><h1>{{name}}</h1></div>',
+        data() {
+            return {
+                name: 'cpy'
+            }
+        }
+    })
+    //自定义组件简写
+    const Country = {
+        name:'Country',
+        template:
+            '<div><h1>{{country}}</h1><School></School><Student></Student></div>',
+        data() {
+            return {
+                country: 'china'
+            }
+        },
+        components:{
+            School,
+            Student
+        }
+    }
+    const App = {
+        name:'App',
+        template:
+            '<div><h1>{{app}}</h1><Country></Country></div>',
+        data() {
+            return {
+                app: 'app'
+            }
+        },
+        components: {
+            Country
+        }
+    }
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            name: 'vue',
+        },
+        components: {
+           App
+        }
+    })
+
+
+</script>
+</body>
+</html>
