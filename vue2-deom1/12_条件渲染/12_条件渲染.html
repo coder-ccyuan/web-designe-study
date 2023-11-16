@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<!--v-if 是不会生成dom,v-show dom存在 display=none-->
+<div id="root">
+    <h1>v-show</h1>
+    <button @click="isShow=!isShow">点击改变</button>
+    <div v-show="isShow" :style="style1"></div>
+    <hr>
+    <h1>v-if v-else-if v-else {{count}}</h1>
+    <button @click="count++">点击改变</button>
+    <div v-if="count===1" :style="style1"></div>
+    <!--    如果在判断之间有其他标签会中断判断<span></span>-->
+    <div v-else-if="count===2" :style="style2"></div>
+    <div v-else-if="count===3" :style="style3"></div>
+    <div v-else :style="style4"></div>
+</div>
+<script>
+    new Vue({
+        el: '#root',
+        data: {
+            isShow: false,
+            count: -1,
+            style1: {
+                height: '100px',
+                width: '100px',
+                border: '1px red solid'
+            },
+            style2: {
+                height: '100px',
+                width: '100px',
+                border: '1px blue solid'
+            },
+            style3: {
+                height: '100px',
+                width: '100px',
+                border: '1px yellow solid'
+            },
+            style4: {
+                height: '100px',
+                width: '100px',
+                border: '1px black solid'
+            }
+        }
+    })
+</script>
+</body>
+</html>

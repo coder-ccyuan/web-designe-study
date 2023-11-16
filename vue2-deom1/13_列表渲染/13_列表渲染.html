@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <input type="text" v-model="keyWorld"> <button @click="sortType=1">年龄升序</button><button @click="sortType=2">年龄降序</button><button @click="sortType=0">默认</button>
+    <ul>
+        <li v-for="(member,index) in filterM" :key="member.id">
+            {{member.name}}--{{member.gender}}--{{member.age}}
+        </li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:'#root',
+        data:{
+            keyWorld:'',
+            sortType:0,//0默认，1升序，2降序
+            members:[
+                {id:'001',name:'jack',gender:'男',age:11},
+                {id:'002',name:'李四',gender:'男',age:9},
+                {id: '003', name: '李一', gender: '男',age:22},
+                {id: '004', name: '王五', gender: '男',age:33}
+            ]
+        },
+        computed: {
+            filterM() {
+                const filterM= this.members.filter((member) => {
+                    return member.name.indexOf(this.keyWorld) >= 0;
+                })
+                if (this.sortType) {
+                     filterM.sort((m1, m2) => {
+                        return this.sortType === 1 ? m1.age - m2.age : m2.age - m1.age;
+                    })
+                }
+                return filterM;
+            }
+        }
+    })
+</script>
+</body>
+</html>

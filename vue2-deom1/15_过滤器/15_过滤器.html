@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+  <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<!--不能在v-model 中使用-->
+<div id="root">
+  <input type="text" v-model="author">
+  <br>
+  <!--  过滤器 | 管道符-->
+  {{author | filter1 | filter2}}
+</div>
+<script type="text/javascript">
+  const vm = new Vue({
+    el: '#root',//'#root'是css id选择器,底层使用拿到root的document
+    data: {
+      author: '',
+    },
+    filters: {
+      filter1(value) {
+        return value + 'by'
+      },
+      filter2(value) {
+        return value + 'cpy'
+      }
+    }
+  });
+
+</script>
+</body>
+</html>
+</body>
+</html>

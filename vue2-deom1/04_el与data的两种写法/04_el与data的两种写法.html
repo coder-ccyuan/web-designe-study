@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>hello {{name}}{{1 + 1}}{{address.toUpperCase()}}</h1>
+</div>
+<script type="text/javascript">
+    const X = new Vue({
+        // el:'#root',第一种挂载方式
+        // data: {
+        //     name: 'world',
+        //     address:'china'
+        // }
+        data: function () {
+            return {
+                name: 'world',
+                address: 'china'
+            }
+        }
+    });
+    X.$mount('#root')//第二种方挂载方式
+    console.log(X)
+
+</script>
+</body>
+</html>

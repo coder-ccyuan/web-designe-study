@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <span v-small="n"></span><button @click="n++">点击n++</button>
+</div>
+<script >
+ const vm=   new Vue({
+        el:'#root',
+        data:{
+            name:'dsfsd',
+            n:1
+        },
+        directives:{
+            //自定义指令缩写，函数式默认在绑定时，和更新时调用
+            big(element,binding){
+                console.log('v-big 被调用')
+                console.log(binding)
+                element.value = binding.value
+            },
+            //对象式，完整
+            small: {
+                //指令与元素绑定时（一上来）
+                bind(element, binding) {
+                    element.innerText = binding.value
+                    this.name=binding.value*10
+                    console.log('bind')
+                },
+                //指令与元素插入后，已经在页面上解析
+                inserted(element, binding) {
+                    console.log('inserted')
+                },
+                //指令与元素重新解析时
+                update(element, binding) {
+                    console.log('update')
+                }
+            }
+        },
+        methods:{
+            geg(){
+                console.log(this.name)
+            }
+        }
+    })
+</script>
+</body>
+</html>

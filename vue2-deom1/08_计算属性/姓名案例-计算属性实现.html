@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js "></script>
+</head>
+<body>
+<div id="root">
+    姓：<input type="text" v-model="firstname">
+    <br>
+    名：<input type="text" v-model="lastname">
+    <br>
+    姓名：<span>{{fullName}}</span>
+</div>
+<script>
+    const vue=new Vue({
+        el: '#root',
+        data: {
+            lastname: 'gf',
+            firstname: 'fads'
+        },
+        computed:{
+            //完整写法
+            /**
+             *   fullName:{
+             *                 //当fullName 被读取和所依赖的数据被修改时get会被调用
+             *                 get(){
+             *                     return this.lastname+this.firstname
+             *                 },
+             *                 //当fullName 被修改时set会被调用
+             *                 set(value){
+             *                     this.lastname=value;
+             *                 }
+             *             }
+             */
+          //简写
+            fullName(){
+                return this.lastname+this.firstname;
+            }
+        }
+    })
+</script>
+</body>
+</html>

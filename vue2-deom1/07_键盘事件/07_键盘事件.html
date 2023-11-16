@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div>
+    <label>
+        <input type="text" @keyup="key" placeholder="输入a">
+        <!--        vue提供特殊按键的别名 如： .enter .shift-->
+        <input type="text" @keyup.enter="enter" placeholder="输入enter">
+        <!--        shift 有特殊功能，使用keyup 不能触发，要使用keydown table同理-->
+        <input type="text" @keydown.shift="shift" placeholder="输入shift">
+        <!--       CapsLock 要用-分隔 -->
+        <input type="text" @keyup.caps-lock="enter" placeholder="输入shift">
+    </label>
+</div>
+<script>
+    const vue = new Vue({
+        el: 'div',
+        data: {
+            name: 'vue'
+        },
+        methods: {
+            key(e) {
+                // console.log(e.target)
+                console.log(e.keyCode)//e.keyCode 获取事件按下键盘的值
+                if (e.keyCode === 65) {
+                    alert("输入正确")
+                }
+            },
+            enter(){
+                alert("enter")
+
+            },
+            shift(){
+                alert("shift")
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

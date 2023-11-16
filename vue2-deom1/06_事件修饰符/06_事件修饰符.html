@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .box1 {
+            height: 100px;
+            width: 100px;
+            margin: 20px;
+            padding: 20px;
+            border: black 1px solid;
+        }
+
+        .box2 {
+            height: 50px;
+            width: 50px;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <!--    .prevent 阻止默认事件-->
+    <a href="https://baidu.com" @click.prevent="clickA">baidu</a>
+
+    <!--    .stop 阻止冒泡事件 .stop加在子标签中生效-->
+    <div class="box1" @click="clickDiv">
+        .stop 阻止冒泡事件
+        <div class="box2" @click.stop="clickDiv">
+            .stop 阻止冒泡事件
+        </div>
+    </div>
+    <!--    .once 事件只触发一次-->
+    <div class="box1" @click.once="clickDiv">.once 事件只触发一次</div>
+    <!--    .capture 启用事件捕获模式 .capture加在父标签中生效-->
+    <div class="box1" @click.capture="clickDiv">
+        .capture 启用事件捕获模式
+        <div class="box2" @click="clickDiv2">
+            .capture 阻止冒泡事件
+        </div>
+    </div>
+    <!--    .self 只有event.target 是点击的元素时生效-->
+    <div class="box1" @click.self="clickDiv">
+        <div class="box2" @click.self="clickDiv2"></div>
+    </div>
+    <!--    .passive 事件默认行为立即执行，无需等回调函数执行完-->
+
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        methods: {
+            clickA() {
+                alert('click <a> element and prevent default event!')
+            },
+            clickDiv() {
+                alert('click <div> element ')
+            },
+            clickDiv2() {
+                alert('click <div>2 element ')
+            }
+        }
+    })
+</script>
+</body>
+</html>

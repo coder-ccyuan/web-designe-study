@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <button @click="n++">点击n++</button>
+    {{n}}
+    <button @click="$destroy()">销毁</button>
+</div>
+<script type="text/javascript">
+
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            n: 1
+        },
+        //methods和data 还没有在vue中
+        create() {
+            console.log('create', this.n)
+        },
+        //methods和data 还在vue中，dom是虚拟dom，还没挂载
+        created() {
+            console.log('created',this.n)
+        },
+        //methods和data 还在vue中，dom是虚拟dom，还没挂载
+        beforeMount(){
+            console.log('beforeMount',this.n)
+        },
+        //methods和data 还在vue中，dom是真实dom，挂载
+        mounted(){
+            console.log('mounted',this.n)
+        },
+        // 在页面上使用的数据变化重新解析前
+        beforeUpdate(){
+            console.log('update',this.n)
+        },
+        //在页面上使用的数据变化重新解析后
+        updated(){
+            console.log('updated',this.n)
+        },
+        beforeDestroy(){
+            console.log('destroy',this.n)
+        },
+        destroyed(){
+            console.log('destroy',this.n)
+        }
+    });
+
+</script>
+</body>
+</html>
+</body>
+</html>

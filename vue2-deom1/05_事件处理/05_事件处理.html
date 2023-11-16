@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <button v-on:click="show1($event,2)">点击事件1</button>
+    <!--    点击事件简写 @代替v-on: -->
+    <button @click="show2">点击事件2</button>
+</div>
+<script type="text/javascript">
+    new Vue({
+        el: '#root',
+        methods: {
+            show1(e, number) {
+                console.log(e)
+                console.log(number)
+                alert('点击事件1')
+            },
+            show2() {
+                alert('点击事件2')
+            }
+        }
+    })
+</script>
+</body>
+</html>

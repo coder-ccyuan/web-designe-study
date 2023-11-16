@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>{{title}}</h1>
+    <hr>
+    <h1>单项数据绑定</h1>
+    <!--    v-bind-->
+    <input type="text" v-bind:value="name">
+    <hr>
+    <h1>双向数据绑定</h1>
+    <!--    v-model-->
+    <!--    注意 v-model只能用于表单标签的属性-->
+    <input type="text" v-model:value="name2">
+    <!--    简写 v-model 默认收集value值-->
+    <input type="text" v-model="name2">
+</div>
+<script>
+    const vue = new Vue({
+        el: '#root',
+        data: {
+            title: '数据绑定',
+            name: '单项数据绑定',
+            name2:'双向数据绑定'
+        }
+    })
+</script>
+</body>
+</html>

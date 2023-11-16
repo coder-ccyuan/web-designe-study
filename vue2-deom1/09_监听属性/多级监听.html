@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js "></script>
+</head>
+<body>
+<div id="root">
+    <!--    <h1>今天天气很{{isHot?'炎热':'凉爽'}}</h1>-->
+    <h1>今天天气很{{info}}{{numbers.a}}</h1>
+    <button @click="isHot=!isHot">切换天气</button>
+    <button @click="numbers.a--">改变数字</button>
+</div>
+<script>
+    const vue=new Vue({
+        el: '#root',
+        data: {
+            isHot: true,
+            numbers:{
+                a:11,
+                b:22
+            }
+        },
+        computed: {
+            info() {
+                return this.isHot ? '炎热' : '凉爽';
+            }
+        },
+        watch: {
+            //多级监听
+            /*         'numbers.a': {
+                         handler(newValue, oldValue) {
+                             console.log(newValue + '===' + oldValue)
+                         }
+                     },*/
+            /*     numbers: {
+                     deep:true ,//开启多级监听
+                     handler(newValue, oldValue) {
+                         console.log(newValue.a+'==='+oldValue.a)
+                     }
+                 }*/
+            //简写
+            isHot(newValue, oldValue) {
+
+                    console.log(newValue + '===' + oldValue)
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

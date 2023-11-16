@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style type="text/css">
+        .one{
+            border: 1px solid red;
+            height: 50px;
+            width: 50px;
+        }
+        .two{
+            background-color: black;
+        }
+        .three{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="root" >
+<!--    通过字符串绑定-->
+    <div class="one three" :class="classTwo"></div>
+    <!--    通过数组绑定-->
+    <div :class="classArr"></div>
+    <!--    通过对象绑定-->
+    <div :class="classObj"></div>
+</div>
+<script>
+    new Vue({
+        el: '#root',
+        data: {
+            classTwo: 'two',
+            classArr: ['one', 'two', 'three'],
+            classObj: {
+                one: true,
+                tow: false,
+                three: false
+            }
+        }
+    })
+</script>
+</body>
+</html>
